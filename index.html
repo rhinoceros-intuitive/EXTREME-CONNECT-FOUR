@@ -1,9 +1,9 @@
 <!doctype html> 
 <html lang="en"> 
 <head> 
-	<meta charset="UTF-8" />
-	<title>EXTREME</title>
-	<script type="text/javascript" src="js/phaser.min.js"></script>
+    <meta charset="UTF-8" />
+    <title>EXTREME</title>
+    <script type="text/javascript" src="js/phaser.min.js"></script>
     <script type="text/javascript" src="js/Chip.js"></script>
     <style type="text/css">
         body {
@@ -17,7 +17,6 @@
 
 
 var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example', { preload: preload, create: create, update: update });
-var leftback = false;
 
 
 function preload() {
@@ -26,55 +25,31 @@ function preload() {
 
 }
 
+var turn = 0;
+var released = 0;
+
 function create() {
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
     game.add.sprite(0, 0, 'grid');
 
-    leftchip = game.add.sprite(150, 500, 'leftchip');
-    midchip = game.add.sprite(300, 500, 'midchip');
-    rightchip = game.add.sprite(450, 500, 'rightchip');
+    redhand = [];
+    blackhand = [];
 
-    //  Input Enable the sprites
-    leftchip.inputEnabled = true;
-    midchip.inputEnabled = true;
-    rightchip.inputEnabled = true;
+    for (var i = 0; i < 3; i++) {
+        redhand.push(new GameChip(i, game, 1));
+        blackhand.push(new GameChip(i, game, 0));
+    }
 
-    game.physics.arcade.enable(leftchip, Phaser.Physics.ARCADE);
-
-
-        //  Allow dragging - the 'true' parameter will make the sprite snap to the center
-    leftchip.input.enableDrag(true, true);
-    midchip.input.enableDrag(true, true);
-    rightchip.input.enableDrag(true, true);
-
-    leftchip.events.onDragStart.add(takeLeft, this);
-    leftchip.events.onDragStop.add(returnLeft, this);
-
+    blackhand[0].exists = false;
+    blackhand[1].exists = false;
+    blackhand[2].exists = false;
+    turn = 1;
 
 }
 
 function update()   {
-    if (game.physics.arcade.distanceToXY(leftchip, 150, 500) < 5)   {
-        leftchip.body.moves = false;
-        leftback = false;
-    }
-    if (leftback)   {
-        game.physics.arcade.moveToXY(leftchip, 150, 500, 1000, 100);   
-    }    
-}
-
-function takeLeft() {
-
-    leftchip.body.moves = false;
-}
-
-function returnLeft()   {
-    leftchip.body.moves = true;
-    game.physics.arcade.accelerateToXY(leftchip, 150, 500, 500)
-    leftback = true;
-
 }
 
 </script>
