@@ -1,24 +1,6 @@
 <!doctype html>
 <html lang="en">
 
-<!EXTREME CONNECT FOUR
-    By    Matthew Hale
-    and   Samarth Mohan
-
-    This game is a remake of an old classic from our high school
-    days.  The game is played like Connect Four, with a few EXTREME twists:
-
-    There exist special extreme chips, each with a unique effect!
-
-    Fire Chip burns through the entire column
-    Bomb Chip explodes after three turns
-    Gravity Chip inverts the grid
-    Tunnel chip is placed from the bottom of the grid, pushing all chips above
-    it up one slot
-
-    TODO: Tie each chip's type to a field variable within Chip.js
-    >
-
 
 <head> 
     <meta charset="UTF-8" />
@@ -66,12 +48,14 @@ function create() {
    // blackhand[0].exists = false;
     //blackhand[1].exists = false;
     //blackhand[2].exists = false;
-    turn = 1;
+    //TODO: Add AI for black player
 
 }
 
 function update()   {
-    game.debug.text('X: ' + redhand[0].chip.body.velocity, 32, 32);
+    if (turn % 2)   {
+        //TODO: Add code for AI here
+    }
 }
 
 function render()   {

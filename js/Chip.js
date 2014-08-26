@@ -19,19 +19,19 @@
     }
 
 
+
+/* Sets up the chip to be interactive with the Phaser physics environment*/
+
     this.chip.anchor.set(0.5, 0.5);
     this.chip.name = index.toString();
-
     game.physics.enable(this.chip, Phaser.Physics.ARCADE);
+
+/* Adds drag functionality for the chip*/
+
     this.chip.inputEnabled = true;
     this.chip.input.enableDrag(true, true);
     this.chip.events.onDragStart.add(pickUp, this);
     this.chip.events.onDragStop.add(putDown, this);
-
-
-    this.chip.body.collideWorldBounds = true;
-    this.chip.body.bounce.setTo(1, 1);
-    this.game.debug.text('INIT' + this.number, 64, 64);
 
 };
 
