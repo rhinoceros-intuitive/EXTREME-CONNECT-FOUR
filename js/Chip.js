@@ -20,11 +20,9 @@
 
 
     this.chip.anchor.set(0.5, 0.5);
-
-
     this.chip.name = index.toString();
 
-    game.physics.arcade.enable(this.chip, Phaser.Physics.ARCADE);
+    game.physics.enable(this.chip, Phaser.Physics.ARCADE);
     this.chip.inputEnabled = true;
     this.chip.input.enableDrag(true, true);
     this.chip.events.onDragStart.add(pickUp, this);
@@ -33,6 +31,7 @@
 
     this.chip.body.collideWorldBounds = true;
     this.chip.body.bounce.setTo(1, 1);
+    this.game.debug.text('INIT' + this.number, 64, 64);
 
 };
 
@@ -42,12 +41,10 @@ function pickUp() {
 }
 
 function putDown()   {
-    this.chip.body.moves = true;
-    game.physics.arcade.moveToXY(this.chip, this.x, this.y, 500, 100);
-    setTimeout(function(){lockIn()}, 100);
+
+    this.chip.body.reset();
+    this.chip.x = 200 + this.number * 200;
+    this.chip.y = 500;
+
 }
 
-function lockIn()   {
-    this.chip.body.moves = false;
-    this.chip.body.immovable = true;
-}
