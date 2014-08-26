@@ -1,4 +1,5 @@
 EXTREME-CONNECT-FOUR
 ====================
 
-EXTREEEEME
+By Matt Hale
+and Samarth Mohan
