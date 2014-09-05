@@ -24,7 +24,7 @@ var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example',
 
 function preload() {
 
-
+    game.load.image('background', 'assets/background.png');
 
 }
 
@@ -35,7 +35,7 @@ function create() {
 
     game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    game.add.sprite(0, 0, 'grid');
+    game.add.sprite(0, 0, 'background');
 
     redhand = [];
     blackhand = [];
@@ -44,10 +44,6 @@ function create() {
         redhand.push(new GameChip(i, game, 1));
     //    blackhand.push(new GameChip(i, game, 0));
     }
-
-   // blackhand[0].exists = false;
-    //blackhand[1].exists = false;
-    //blackhand[2].exists = false;
     //TODO: Add AI for black player
 
 }
