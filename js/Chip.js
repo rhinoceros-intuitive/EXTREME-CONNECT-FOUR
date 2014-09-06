@@ -12,10 +12,10 @@
     this.chip;
 
     if (color)  {
-        this.chip = game.add.sprite(x, y, 'redchip');
+        this.chip = game.add.sprite(x, y, 'red chip');
     }
     else    {
-        this.chip = game.add.sprite(x, y, 'blackchip');
+        this.chip = game.add.sprite(x, y, 'black chip');
     }
 
 

@@ -18,13 +18,14 @@
 <script type="text/javascript">
 
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'phaser-example',
+var game = new Phaser.Game(800, 600, Phaser.AUTO, 'Extreme Connect Four',
     { preload: preload, create: create, update: update, render: render });
 
 
 function preload() {
 
     game.load.image('background', 'assets/background.png');
+    game.load.image('red chip', 'assets/redchip.png');
 
 }
 
