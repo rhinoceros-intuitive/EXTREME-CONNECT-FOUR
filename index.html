@@ -5,8 +5,13 @@
 <head> 
     <meta charset="UTF-8" />
     <title>EXTREME</title>
+    <script type="text/javascript">
+        var WIDTH = 800;
+        var HEIGHT = 600;
+    </script>
     <script type="text/javascript" src="js/phaser.min.js"></script>
     <script type="text/javascript" src="js/Chip.js"></script>
+    <script type="text/javascript" src="js/Tile.js"></script>
     <style type="text/css">
         body {
             margin: 0;
@@ -18,46 +23,59 @@
 <script type="text/javascript">
 
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, 'Extreme Connect Four',
-    { preload: preload, create: create, update: update, render: render });
+    var game = new Phaser.Game(WIDTH, HEIGHT, Phaser.AUTO, 'Extreme Connect Four',
+        { preload: preload, create: create, update: update, render: render });
 
 
-function preload() {
+    function preload() {
 
-    game.load.image('background', 'assets/background.png');
-    game.load.image('red chip', 'assets/redchip.png');
+        game.load.image('background', 'assets/background.png');
+        game.load.image('red chip', 'assets/redchip.png');
+        game.load.image('grid tile', 'assets/unplaced.png');
 
-}
-
-var turn = 0;
-var released = 0;
-
-function create() {
-
-    game.physics.startSystem(Phaser.Physics.ARCADE);
-
-    game.add.sprite(0, 0, 'background');
-
-    redhand = [];
-    blackhand = [];
-
-    for (var i = 0; i < 3; i++) {
-        redhand.push(new GameChip(i, game, 1));
-    //    blackhand.push(new GameChip(i, game, 0));
     }
+
+    var turn = 0;
+    var released = 0;
+
+    function create() {
+
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+
+        game.add.sprite(0, 0, 'background');
+
+        //Creation of two dimensional array for grid tile items
+        var grid = new Array(7);
+        for (var i = 0; i < 7; i++) {
+            grid[i] = new Array(6);
+        }
+
+        //Nested for loop which initializes grid
+        for (var x = 0; x < 7; x++) {
+            for (var y = 0; y < 6; y++) {
+                grid[x].push(new Tile(x, y));
+            }
+        }
+
+        redhand = new Array(3);
+        blackhand = new Array(3);
+
+        for (var i = 0; i < 3; i++) {
+            redhand.push(new GameChip(i, game, 1));
+        }
     //TODO: Add AI for black player
 
-}
-
-function update()   {
-    if (turn % 2)   {
-        //TODO: Add code for AI here
     }
-}
 
-function render()   {
+    function update()   {
+        if (turn % 2)   {
+        //TODO: Add code for AI here
+        }
+    }
 
-}
+    function render()   {
+
+    }
 
 </script>
 
