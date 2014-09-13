@@ -41,10 +41,35 @@ function pickUp() {
 }
 
 function putDown()   {
-
+    var column = Math.floor((this.chip.x - BASEX) / TILESIZE);
+    
+    if (0 <= column && column <= 7)   {
+        var tester = drop(5, column);
+    }
     this.chip.body.reset();
     this.chip.x = 200 + this.number * 200;
     this.chip.y = 500;
 
 }
+
+
+//Recursive function that allows chips to drop to the lowest spot.
+//LoadTexture updates the sprite image for the designated grid.
+function drop(row, col) {
+        if (row > 0)    {
+            if (grid[col][row - 1].occupied)    {
+                grid[col][row].tile.loadTexture('red placed');
+                grid[col][row].occupied = true;
+                return 1;
+            }
+            else    {
+                return drop(row - 1, col);
+            }
+        }
+        else    {
+            grid[col][row].tile.loadTexture('red placed');
+            grid[col][row].occupied = true;
+            return 1;
+        }
+    }
 
