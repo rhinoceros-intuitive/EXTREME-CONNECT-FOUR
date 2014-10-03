@@ -11,6 +11,9 @@
         var TILESIZE = 60;
         var BASEX = (WIDTH - 7 * TILESIZE) / 2;
         var BASEY = 360;
+        var ROWS = 6;
+        var COLUMNS = 7;
+        var turn = 0;
         var grid = [];
     </script>
     <script type="text/javascript" src="js/phaser.min.js"></script>
@@ -38,11 +41,11 @@
         game.load.image('red chip', 'assets/redchip.png');
         game.load.image('grid tile', 'assets/unplaced.png');
         game.load.image('red placed', 'assets/redchip_placed.png');
+        game.load.image('black placed', 'assets/blackchip_placed.png');
 
     }
-    var rows = 6;
-    var columns = 7;
-    var turn = 0;
+    var rows = ROWS;
+    var columns = COLUMNS;
     var released = 0;
 
     function create() {
@@ -75,7 +78,9 @@
 
     function update()   {
         if (turn % 2)   {
-        //TODO: Add code for AI here
+            var returner = blackdrop(ROWS - 1,
+                Math.floor((Math.random() * COLUMNS)));
+        turn++;
         }
     }
 

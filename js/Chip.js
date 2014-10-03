@@ -1,4 +1,4 @@
- GameChip = function (index, game, color) {
+GameChip = function (index, game, color) {
 
     var x = 200 + index * 200;
     var y = 500;
@@ -44,7 +44,8 @@ function putDown()   {
     var column = Math.floor((this.chip.x - BASEX) / TILESIZE);
     
     if (0 <= column && column <= 7)   {
-        var tester = drop(5, column);
+        var tester = reddrop(5, column);
+        turn++;
     }
     this.chip.body.reset();
     this.chip.x = 200 + this.number * 200;
