@@ -78,7 +78,7 @@
 
     function update()   {
         if (turn % 2)   {
-            var returner = blackDrop(ROWS - 1,
+            var returner = basicDrop("black", ROWS - 1,
                 Math.floor((Math.random() * COLUMNS)));
         turn++;
         }
