@@ -44,7 +44,7 @@ function putDown()   {
     var column = Math.floor((this.chip.x - BASEX) / TILESIZE);
     
     if (0 <= column && column <= 7)   {
-        var tester = reddrop(5, column);
+        var tester = redDrop(5, column);
         turn++;
     }
     this.chip.body.reset();
