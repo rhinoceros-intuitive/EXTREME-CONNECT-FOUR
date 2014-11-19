@@ -36,7 +36,6 @@ GameChip = function (index, game, color) {
 };
 
 function pickUp() {
-
     this.chip.body.moves = false;
 }
 
@@ -44,7 +43,12 @@ function putDown()   {
     var column = Math.floor((this.chip.x - BASEX) / TILESIZE);
     
     if (0 <= column && column <= 7)   {
+<<<<<<< HEAD
         var tester = redDrop(5, column);
+=======
+        var row = basicDrop("Red", 5, column);
+        
+>>>>>>> master
         turn++;
     }
     this.chip.body.reset();
