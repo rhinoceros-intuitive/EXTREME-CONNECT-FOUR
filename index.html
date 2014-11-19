@@ -42,14 +42,8 @@
         game.load.image('background', 'assets/background.png');
         game.load.image('red chip', 'assets/redchip.png');
         game.load.image('grid tile', 'assets/unplaced.png');
-<<<<<<< HEAD
-        game.load.image("redplaced", 'assets/redchip_placed.png');
-        game.load.image("blackplaced", 'assets/blackchip_placed.png');
-=======
         game.load.image("Redplaced", 'assets/redchip_placed.png');
         game.load.image("Blackplaced", 'assets/blackchip_placed.png');
->>>>>>> master
-
     }
     var rows = ROWS;
     var columns = COLUMNS;
@@ -82,11 +76,7 @@
 
     function update()   {
         if (turn % 2)   {
-<<<<<<< HEAD
-            var returner = blackDrop(ROWS - 1,
-=======
             var returner = basicDrop("Black", ROWS - 1,
->>>>>>> master
                 Math.floor((Math.random() * COLUMNS)));
         turn++;
         }
