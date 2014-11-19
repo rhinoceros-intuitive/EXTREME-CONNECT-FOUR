@@ -4,6 +4,8 @@ Tile = function(x, y)	{
 	var scaledy = BASEY - TILESIZE * y;
 	this.occupied = "empty";   //String representation of what color chip
 	this.y = y;				   //is in the grid tile
+	this.xcor = scaledx;
+	this.ycor = scaledy;
 
 	this.tile = game.add.sprite(scaledx, scaledy, 'grid tile');
 

@@ -14,12 +14,14 @@
         var ROWS = 6;
         var COLUMNS = 7;
         var turn = 0;
+        var winner = "no one";
         var grid = [];
     </script>
     <script type="text/javascript" src="js/phaser.min.js"></script>
     <script type="text/javascript" src="js/Chip.js"></script>
     <script type="text/javascript" src="js/Tile.js"></script>
     <script type="text/javascript" src="js/Drop.js"></script>
+    <script type="text/javascript" src="js/Check.js"></script>
     <style type="text/css">
         body {
             margin: 0;
@@ -40,8 +42,8 @@
         game.load.image('background', 'assets/background.png');
         game.load.image('red chip', 'assets/redchip.png');
         game.load.image('grid tile', 'assets/unplaced.png');
-        game.load.image("redplaced", 'assets/redchip_placed.png');
-        game.load.image("blackplaced", 'assets/blackchip_placed.png');
+        game.load.image("Redplaced", 'assets/redchip_placed.png');
+        game.load.image("Blackplaced", 'assets/blackchip_placed.png');
 
     }
     var rows = ROWS;
@@ -71,21 +73,21 @@
         for (var i = 0; i < 3; i++) {
             redhand.push(new GameChip(i, game, 1));
         }
-        
-    //TODO: Add AI for black player
-
     }
 
     function update()   {
         if (turn % 2)   {
-            var returner = basicDrop("black", ROWS - 1,
+            var returner = basicDrop("Black", ROWS - 1,
                 Math.floor((Math.random() * COLUMNS)));
         turn++;
         }
     }
 
     function render()   {
-       
+        if (winner != "no one")    {
+            alert(winner + "wins!");
+            winner = "no one";
+        }
     }
 
 </script>
