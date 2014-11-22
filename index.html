@@ -84,8 +84,33 @@
 
     function render()   {
         if (winner != "no one")    {
-            alert(winner + "wins!");
-            winner = "no one";
+
+            //The pause allows the winning move to be briefly shown
+
+            var pause = 500;
+            setTimeout(function()   {
+
+                //This seemingly redundant conditional fixes a bug where
+                //"no onewins!" would be repeatedly displayed
+
+                if (winner != "no one") {
+                    alert(winner + "wins!");
+                    winner = "no one";
+                    restart();
+                }
+            }, pause);
+            
+        }
+    }
+
+    function restart()  {
+        for (var x = 0; x < 7; x++) {
+            for (var y = 0; y < 6; y++) {
+                if (grid[x][y].occupied != "empty")   {
+                    grid[x][y].tile.loadTexture('grid tile');
+                    grid[x][y].occupied = "empty";
+                }
+            }
         }
     }
 
